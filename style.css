@@ -1,0 +1,767 @@
+.secret-btn:hover {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.secret-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid white;
+  color: white;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  align-self: flex-start; /* evita que ocupe todo el ancho */
+}
+
+/* Hover elegante */
+.secret-btn:hover {
+  background: white;
+  color: #ff4d6d; /* rosado romántico */
+  transform: scale(1.05);
+}
+
+/* Click */
+.secret-btn:active {
+  transform: scale(0.97);
+}
+
+:root {
+  --primary-bg: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #feada6 100%);
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --text-white: #ffffff;
+  --accent-pink: #d63384;
+  --btn-bg: rgba(0, 0, 0, 0.2);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom right,
+    #ff8fab,
+    #d90468
+  ); /* Fondo degradado rosa */
+  font-family: "Poppins", sans-serif;
+  color: var(--text-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Corazones flotantes de fondo (decoración sutil) */
+.bg-heart {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.1);
+  z-index: 0;
+}
+
+.container {
+  max-width: 1200px;
+  width: 95%;
+  padding: 20px;
+  z-index: 1;
+}
+
+/* Título Principal */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h1.main-title {
+  font-family: "Dancing Script", cursive;
+  font-size: 4rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0;
+}
+
+/* Grid Layout */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+  h1.main-title {
+    font-size: 3rem;
+  }
+}
+
+/* Estilos de las Tarjetas (Glassmorphism) */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 25px;
+  padding: 30px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card-header i {
+  font-size: 1.8rem;
+  color: white; /* Iconos blancos */
+}
+
+.card-header h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* --- CARD 1: Puerta Secreta --- */
+.secret-content label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+.secret-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espacio automático entre input y botón */
+}
+
+.custom-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 15px;
+  border-radius: 12px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  outline: none;
+  box-sizing: border-box; /* Asegura que el padding no rompa el ancho */
+}
+
+.custom-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.secret-message {
+  display: none; /* Oculto por defecto */
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  animation: fadeIn 0.5s;
+}
+
+/* --- CARD 2: Música --- */
+.music-player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.track-info h3 {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.controls i {
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+
+.controls i:hover {
+  transform: scale(1.2);
+}
+
+.album-art {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  background: url("https://i.scdn.co/image/ab67616d0000b2735480d5d55e8a60429f5f6511")
+    center/cover; /* Imagen de ejemplo Bad Bunny */
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.progress-circle {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 2px solid white;
+  border-radius: 50%;
+  border-left-color: transparent;
+  transform: rotate(45deg);
+}
+
+/* --- CARD 3: Match --- */
+.match-card {
+  padding-bottom: 15px;
+}
+
+.match-photo-container {
+  flex-grow: 1;
+  border-radius: 15px;
+  position: relative;
+  margin: 10px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.match-photo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.match-actions {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.action-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.action-btn.close {
+  background: rgba(255, 0, 0, 0.2);
+}
+.action-btn.like {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.action-btn:hover {
+  transform: scale(1.1);
+  background: white;
+}
+.action-btn:hover i {
+  color: #d90468;
+}
+
+/* --- CARD 4: Quiz --- */
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+.question-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-btn {
+  background: var(--btn-bg);
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+}
+
+.option-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.option-btn.correct {
+  background: #4caf50;
+}
+
+.option-btn.wrong {
+  background: #f44336;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* CONTENEDOR DE CORAZONES */
+.hearts-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* CORAZÓN INDIVIDUAL */
+.floating-heart {
+  position: absolute;
+  bottom: -20px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 20px;
+  animation: floatUp linear forwards;
+}
+
+/* ANIMACIÓN */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Ajuste para la imagen dentro del vinilo */
+.album-art {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden; /* Para que la imagen sea circular */
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  transition: transform 0.5s ease;
+}
+
+.vinyl-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Animación de rotación */
+@keyframes rotateVinyl {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.playing #vinyl {
+  animation: rotateVinyl 4s linear infinite;
+}
+
+/* Estilo para el botón cuando está en pausa */
+.controls i {
+  width: 30px;
+  text-align: center;
+}
+/* Organización de la Música */
+.music-player-v2 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+.player-main {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.track-info-v2 h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: white;
+}
+
+.now-playing {
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  opacity: 0.7;
+  margin-top: 5px;
+}
+
+/* Botones de reproducción */
+.playback-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  font-size: 1.2rem;
+}
+
+.play-wrapper {
+  width: 50px;
+  height: 50px;
+  background: white;
+  color: #d90468;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Slider de Volumen */
+.volume-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+#volumeSlider {
+  width: 100px;
+  cursor: pointer;
+  accent-color: white;
+}
+
+/* Animación Vinilo */
+.vinyl-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+}
+
+.playing #vinyl {
+  animation: rotateVinyl 4s linear infinite;
+}
+
+@keyframes rotateVinyl {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Contenedor del icono */
+.volume-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* La barra de volumen oculta */
+.volume-popout {
+  position: absolute;
+  bottom: 40px; /* Aparece arriba del icono */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 10px 5px;
+  border-radius: 20px;
+  display: none; /* Oculto por defecto */
+  animation: fadeIn 0.3s ease;
+  z-index: 10;
+}
+
+/* Mostrar la barra al pasar el mouse o hacer clic */
+.volume-wrapper:hover .volume-popout,
+.volume-wrapper:active .volume-popout {
+  display: block;
+}
+
+/* Estilo vertical para el slider */
+#volumeSlider {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 80px;
+  height: 4px;
+  background: white;
+  border-radius: 5px;
+  outline: none;
+  /* Rotamos la barra para que sea vertical */
+  transform: rotate(-90deg);
+  margin: 35px 0;
+}
+
+#volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #d90468;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+#volumeIcon {
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+
+#volumeIcon:hover {
+  transform: scale(1.2);
+}
+/* --- CORRECCIÓN DE VINILO DESCENTRADO --- */
+
+.album-art {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  min-width: 120px; /* Evita que se deforme en pantallas pequeñas */
+  min-height: 120px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* La clave: el origen de la transformación debe ser el centro */
+  transform-origin: center center;
+}
+
+.vinyl-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%; /* Asegura que la imagen sea circular */
+  display: block;
+}
+
+/* Animación de rotación mejorada */
+@keyframes rotateVinyl {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Aplicamos la animación al contenedor, no a la imagen */
+/* Usamos .playing porque es la clase que el JS añade a la card */
+.playing #vinyl {
+  animation: rotateVinyl 4s linear infinite;
+}
+
+/* Ajuste opcional: para que no se vea el corte de la foto, 
+   podemos añadir un pequeño agujero central tipo disco */
+.album-art::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #333;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  z-index: 2;
+}
+#punishmentArea {
+  display: none;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  border: 2px dashed #fff;
+  background: rgba(217, 4, 104, 0.4); /* Un rojo/rosa más intenso */
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.option-btn {
+  width: 100%;
+  margin-bottom: 8px;
+}
+/* Switch de Turno */
+.user-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #d90468;
+}
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Animación Match */
+.match-success {
+  animation: heartBeat 0.8s infinite;
+  color: #ff4d6d !important;
+  text-shadow: 0 0 10px white;
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* Alineación a la izquierda */
+.match-controls-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Todo a la izquierda */
+  gap: 10px;
+  margin-bottom: 15px;
+  padding-left: 5px;
+}
+
+.user-switch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#matchStatus {
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+/* EFECTO VERDE NEÓN */
+.neon-active {
+  color: #39ff14 !important;
+  text-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14,
+    0 0 20px #39ff14;
+}
+
+#photoFrame {
+  position: relative;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+/* Borde neón para la foto cuando hay match */
+.match-border-neon {
+  border: 3px solid #39ff14 !important;
+  box-shadow: 0 0 15px #39ff14;
+}
+
+#neonMatchBadge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-size: 3rem;
+  font-weight: 900;
+  color: #39ff14;
+  border: 4px solid #39ff14;
+  padding: 10px 20px;
+  display: none; /* Oculto por defecto */
+  text-shadow: 0 0 10px #39ff14;
+  box-shadow: 0 0 15px #39ff14;
+  z-index: 10;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.5);
+}
